@@ -6,5 +6,5 @@ a.sort()
 for i in a:
     tmp += i
     sum += tmp
-print(sum)        
+print(sum)
 
