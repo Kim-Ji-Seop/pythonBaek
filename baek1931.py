@@ -1,22 +1,14 @@
 import sys
-input = lambda : sys.stdin.readline().rstrip()
-B =int(input())
+B =int(sys.stdin.readline())
 arr = [0 for _ in range(B) ]
-max=0
 for i in range(B):    
-	arr[i] = list(map(int, input().split()))
+	arr[i] = list(map(int, sys.stdin.readline().split()))
 
-arr.sort()
-
-for i in range(len(arr)):
-    count=1
-    endT = arr[i][1]
-    for j in range(len(arr)-1):
-        startT = arr[j+1][0]
-        if endT <= startT:
-            endT = arr[j+1][1]
-            count += 1
-    if max <= count:
-        max = count
-############
-print(max)
+arr.sort(key = lambda x: (x[1],x[0]))
+count=1
+endT = arr[0][1]
+for i in range(1,B):
+    if endT <= arr[i][0]:
+        endT = arr[i][1]
+        count += 1
+print(count)
